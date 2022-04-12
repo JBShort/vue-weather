@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       api_key: '92687dc82e40f1fba84f789e1da90cf7',
-      url_base: "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}",
+      url_base: "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid={API key}",
       query: '',
       weather: {}
     }
@@ -47,6 +47,18 @@ export default {
     },
     setResults (results) {
       this.weather = results;
+    },
+    dateBuilder () {
+      let d = new Date();
+      let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+      let day = days[d.getDay()];
+      let date = d.getDate();
+      let month = months[d.getMonth()];
+      let year = d.getFullYear();
+      
+      return `${day} ${date} ${month} ${year}`;
     }
   }
 }
